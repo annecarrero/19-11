@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="menu.Master.cs" Inherits="Coloriza.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8"/>
+    <title>Coloriza - Menu</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Menu */
+        header {
+            background-color: #000;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .menu-items {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-items a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .menu-items a:hover {
+            color: #ED297B;
+        }
+
+        .menu-items a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: #ED297B;
+            transition: width 0.3s ease;
+        }
+
+        .menu-items a:hover::after {
+            width: 100%;
+        }
+
+        /* Pesquisa */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .search-container input[type="text"] {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #fff;
+            padding: 5px;
+            width: 0;
+            transition: width 0.4s ease;
+            font-size: 16px;
+        }
+
+        .search-container input[type="text"]:focus {
+            width: 200px;
+        }
+
+        .search-container button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-container button:hover {
+            color: #ED297B;
+        }
+
+        /* Botão Logout */
+        .logout-button {
+            background-color: #ED297B;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #C2005B;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-button {
+            background-color: #444;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .social-button:hover {
+            background-color: #ED297B;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-items {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div class="logo">
+                <img src="img/logoo.png" alt="Logo Coloriza">
+            </div>
+            <nav>
+                <ul class="menu-items">
+                    <li><a href="index.aspx">Home</a></li>
+                    <li><a href="sobre.aspx">Sobre</a></li>
+                    <li><a href="catalago.aspx">Catálogo</a></li>
+                    <li><a href="#" class="logout-button">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" placeholder="Pesquisar...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+    <footer class="footer">
+        <h2>Coloriza</h2>
+        <p>&copy; 2024 Coloriza. Todos os direitos reservados.</p>
+        <div class="social-buttons">
+            <a href="https://facebook.com" class="social-button"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" class="social-button"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" class="social-button"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
